@@ -1,14 +1,15 @@
 .hero-unit {
-  margin-top:66px;
-  padding-bottom:30px;
-  color: #fff;
-  background-color: #84BD00;
-  text-align:center;
+    margin-top:66px;
+    padding-bottom:30px;
+    color: #fff;
+    background-color: #76C7D0;
+    text-align:center;
 }
 
 .hero-unit h1 {
     font-size:64px;
 }
+
 
 .navbar-nav li a {
     cursor:pointer;
@@ -44,4 +45,21 @@
     height:32px;
     font-size:24px;
 }
+
+#search-form button {
+    background-color: #EE5D0A;
+    color: #F6EECF;
+}
+
+#filter-graph {
+    background-color: #fff;
+    width: 80%;
+    margin: 10px auto;
+}
+
+.filter-btn {
+    height: 3.3em;
+    margin: 40px 10px;
+}
+
 
