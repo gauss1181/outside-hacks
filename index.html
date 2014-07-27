@@ -66,6 +66,8 @@
 <script>
 "use strict";
 
+// Spotify API functions
+
 var accessToken = null;
 
 var playlistFields = {
@@ -87,6 +89,8 @@ function error(msg) {
 function info(msg) {
     $("#info").text(msg);
 }
+
+// Spotify user authentication
 
 function authorizeUser() {
     var client_id = 'b87b5c5200e848b6bd9fbaa242a69054';
@@ -200,6 +204,8 @@ function showTracks(tracks) {
         });
     }
 }
+
+// Main function to output Spotify API data to the HTML
 
 $(document).ready(
 
