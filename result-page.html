@@ -49,33 +49,34 @@
     <div id="search" class="hero-unit">
        <div class="container">
           <div id="intro">
-
             <h1><img src="img/logo-3d.png" height="120px"></img></h1><br />
                 <div id="search">
-
-            <p class="lead">This app demonstrates allows you to generate Outside Lands <br />
+                    <p class="lead">This app demonstrates allows you to generate Outside Lands <br />
                             performance recommendations based on your Spotify listening profile,<br /> in a graph-style format.</p>
-            <div id="search-form" class="form-inline">
-                <br />
-                <span class="xform-control">
-                    <button class="btn btn-info btn-large" id='go' type="button">Show My Starred Tracks</button>
-                </span>
-            </div>
-            <div id="info"> <hr /></div>
-        </div>
+                    <div id="search-form" class="form-inline"><br />
+                        <span class="xform-control">
+                            <button class="btn btn-info btn-large" id='go' type="button">Show My Starred Tracks</button>
+                        </span>
+                    </div>
+                    <div id="info"></div>
+                </div>
 
-    <div id="main" class="container">
-        <h1> Starred Items for <span id="who"> </span></h1>
-        <hr>
-        <div id="item-list"> </div>
-    </div>
-            <p class="lead"></p>
-            <h1>Select a filter</h1>
-            <div id="filter-graph" class="form-inline">
-                <a href="#"><img src="img/btn/btn-genre.png" class="filter-btn"></a>
-                <a href="#"><img src="img/btn/btn-era.png" class="filter-btn"></a>
-                <a href="#"><img src="img/btn/btn-origin.png" class="filter-btn"></a>
-                <a href="#"><img src="img/btn/btn-similarity.png" class="filter-btn"></a>
+            <div id="main" class="container">
+                <h1> Starred Items for <span id="who"> </span></h1>
+                <hr>
+                <div id="item-list"> </div>
+            </div>
+
+            <div id="filter">
+                 <hr />
+                <p class="lead"></p>
+                <h1>Select a filter</h1>
+                <div id="filter-graph" class="form-inline">
+                    <a href="#"><img src="img/btn/btn-genre.png" class="filter-btn"></a>
+                    <a href="#"><img src="img/btn/btn-era.png" class="filter-btn"></a>
+                    <a href="#"><img src="img/btn/btn-origin.png" class="filter-btn"></a>
+                    <a href="#"><img src="img/btn/btn-similarity.png" class="filter-btn"></a>
+                </div>
             </div>
 
             <div id="graph-display">
@@ -409,6 +410,12 @@ $(".filter-btn").click(function(){
   $("#graph-display").show();
   $("#schedule").show();
 });
+
+$("#go").click(function() {
+    $("#filter").show();
+    $("#footer-rsp").show();
+});
+
 </script>
 
 
