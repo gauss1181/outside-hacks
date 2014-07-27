@@ -3,6 +3,10 @@
   <head>
     <style>
 
+body {
+    background-color: #fff;
+}
+
 .node {
   opacity: 0.5;
 }
@@ -14,6 +18,18 @@
 .link {
   stroke: #999;
   stroke-opacity: 0.3;
+}
+
+div.tooltip {
+  color: #222;
+  background: #fff;
+  padding: .5em;
+  text-shadow: #f5f5f5 0 1px 0;
+  border-radius: 2px;
+  box-shadow: 0px 0px 2px 0px #a6a6a6;
+  opacity: 0.9;
+  position: absolute;
+  z-index: 10;
 }
 
     </style>
@@ -29,8 +45,8 @@ function group(d) { return d.group; }
 var color = d3.scale.category10();
 function colorByGroup(d) { return color(group(d)); }
 
-var width = 1600,
-    height = 800;
+var width = 810,
+    height = 500;
 
 var svg = d3.select('#viz')
     .append('svg')
@@ -43,6 +59,10 @@ var voronoi = d3.geom.voronoi()
     .x(function(d) { return d.x; })
     .y(function(d) { return d.y; })
     .clipExtent([[-10, -10], [width+10, height+10]]);
+
+var tooltip = d3.select("#viz").append("div")
+    .attr("class", "tooltip");
+    tooltip.classed("hidden", true);
 
 function recenterVoronoi(nodes) {
     var shapes = [];
@@ -98,20 +118,32 @@ d3.json('d3-data/node-data.json', function(err, data) {
         .attr('class', 'link')
         .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 
+
     node = svg.selectAll('.node')
         .data( data.nodes )
       .enter().append('g')
         .attr('title', name)
         .attr('class', 'node')
-        .call( force.drag );
+        .call( force.drag )
+        //new added codes
+        .on("mouseover", function(d,i) {
+        tooltip.classed("hidden", false)
+              .style("top", "100px")
+              .style("left", (d3.event.pageX + 16) + "px")
+              .html(d.name)
+      })
+      .on("mouseout",  function(d,i) {
+        tooltip.classed("hidden", true);
+      });
+
 
     node.append('circle')
-        .attr('r', 30)
+        .attr('r', 15)
         .attr('fill', colorByGroup)
         .attr('fill-opacity', 0.5);
 
     node.append('circle')
-        .attr('r', 4)
+        .attr('r', 0.5)
         .attr('stroke', 'black');
 
     force

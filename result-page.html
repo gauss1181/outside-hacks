@@ -21,6 +21,25 @@
             stroke: #999;
             stroke-opacity: 0.3;
         }
+
+        div.tooltip {
+            color: #222;
+            background: #fff;
+            padding: .5em;
+            text-shadow: #f5f5f5 0 1px 0;
+            border-radius: 2px;
+            box-shadow: 0px 0px 2px 0px #a6a6a6;
+            opacity: 0.9;
+            position: absolute;
+            z-index: 10;
+        }
+
+        iframe {
+            width: 800px;
+            height: 490px;
+            border: none;
+        }
+
     </style>
     <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
@@ -62,104 +81,119 @@
                 <h1>Click graph to browse</h1>
                 <div id="viz"></div>
 
+                <iframe src="node-graph.html" scrolling="no"></iframe>
+
                 <script>
-                    function name(d) { return d.name; }
-                    function group(d) { return d.group; }
+                //     function name(d) { return d.name; }
+                //     function group(d) { return d.group; }
 
-                    var color = d3.scale.category10();
-                    function colorByGroup(d) { return color(group(d)); }
+                //     var color = d3.scale.category10();
+                //     function colorByGroup(d) { return color(group(d)); }
 
-                    var width = 900,
-                        height = 700;
+                //     var width = 1000,
+                //         height = 800;
 
-                    var svg = d3.select('#viz')
-                            .append('svg')
-                            .attr('width', width)
-                            .attr('height', height);
+                //     var svg = d3.select('#viz')
+                //             .append('svg')
+                //             .attr('width', width)
+                //             .attr('height', height);
 
-                    var node, link;
+                //     var node, link;
 
-                    var voronoi = d3.geom.voronoi()
-                    .x(function(d) { return d.x; })
-                    .y(function(d) { return d.y; })
-                    .clipExtent([[-10, -10], [width+10, height+10]]);
+                //     var voronoi = d3.geom.voronoi()
+                //     .x(function(d) { return d.x; })
+                //     .y(function(d) { return d.y; })
+                //     .clipExtent([[-10, -10], [width+10, height+10]]);
 
-                    function recenterVoronoi(nodes) {
-                        var shapes = [];
-                        voronoi(nodes).forEach(function(d) {
-                            if ( !d.length ) return;
-                            var n = [];
-                                d.forEach(function(c){
-                                    n.push([ c[0] - d.point.x, c[1] - d.point.y ]);
-                                });
-                            n.point = d.point;
-                            shapes.push(n);
-                        });
-                        return shapes;
-                    }
+                //     var tooltip = d3.select("#viz").append("div")
+                //     .attr("class", "tooltip");
+                //     tooltip.classed("hidden", true);
 
-                    var force = d3.layout.force()
-                        .charge(-2000)
-                        .friction(0.3)
-                        .linkDistance(50)
-                        .size([width, height]);
+                //     function recenterVoronoi(nodes) {
+                //         var shapes = [];
+                //         voronoi(nodes).forEach(function(d) {
+                //             if ( !d.length ) return;
+                //             var n = [];
+                //                 d.forEach(function(c){
+                //                     n.push([ c[0] - d.point.x, c[1] - d.point.y ]);
+                //                 });
+                //             n.point = d.point;
+                //             shapes.push(n);
+                //         });
+                //         return shapes;
+                //     }
 
-                    force.on('tick', function() {
-                        node.attr('transform', function(d) { return 'translate('+d.x+','+d.y+')'; })
-                            .attr('clip-path', function(d) { return 'url(#clip-'+d.index+')'; });
+                //     var force = d3.layout.force()
+                //         .charge(-2000)
+                //         .friction(0.3)
+                //         .linkDistance(50)
+                //         .size([width, height]);
 
-                        link.attr('x1', function(d) { return d.source.x; })
-                            .attr('y1', function(d) { return d.source.y; })
-                            .attr('x2', function(d) { return d.target.x; })
-                            .attr('y2', function(d) { return d.target.y; });
+                //     force.on('tick', function() {
+                //         node.attr('transform', function(d) { return 'translate('+d.x+','+d.y+')'; })
+                //             .attr('clip-path', function(d) { return 'url(#clip-'+d.index+')'; });
 
-                        var clip = svg.selectAll('.clip')
-                            .data( recenterVoronoi(node.data()), function(d) { return d.point.index; } );
+                //         link.attr('x1', function(d) { return d.source.x; })
+                //             .attr('y1', function(d) { return d.source.y; })
+                //             .attr('x2', function(d) { return d.target.x; })
+                //             .attr('y2', function(d) { return d.target.y; });
 
-                        clip.enter().append('clipPath')
-                            .attr('id', function(d) { return 'clip-'+d.point.index; })
-                            .attr('class', 'clip');
-                        clip.exit().remove()
+                //         var clip = svg.selectAll('.clip')
+                //             .data( recenterVoronoi(node.data()), function(d) { return d.point.index; } );
 
-                        clip.selectAll('path').remove();
-                        clip.append('path')
-                            .attr('d', function(d) { return 'M'+d.join(',')+'Z'; });
-                    });
+                //         clip.enter().append('clipPath')
+                //             .attr('id', function(d) { return 'clip-'+d.point.index; })
+                //             .attr('class', 'clip');
+                //         clip.exit().remove()
 
-                    d3.json('d3-data/node-data.json', function(err, data) {
+                //         clip.selectAll('path').remove();
+                //         clip.append('path')
+                //             .attr('d', function(d) { return 'M'+d.join(',')+'Z'; });
+                //     });
 
-                        data.nodes.forEach(function(d, i) {
-                            d.id = i;
-                        });
+                //     d3.json('d3-data/node-data.json', function(err, data) {
 
-                        link = svg.selectAll('.link')
-                            .data( data.links )
-                          .enter().append('line')
-                            .attr('class', 'link')
-                            .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+                //         data.nodes.forEach(function(d, i) {
+                //             d.id = i;
+                //         });
 
-                        node = svg.selectAll('.node')
-                            .data( data.nodes )
-                          .enter().append('g')
-                            .attr('title', name)
-                            .attr('class', 'node')
-                            .call( force.drag );
+                //         link = svg.selectAll('.link')
+                //             .data( data.links )
+                //           .enter().append('line')
+                //             .attr('class', 'link')
+                //             .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 
-                        node.append('circle')
-                            .attr('r', 20)
-                            .attr('fill', colorByGroup)
-                            .attr('fill-opacity', 0.5);
+                //         node = svg.selectAll('.node')
+                //             .data( data.nodes )
+                //           .enter().append('g')
+                //             .attr('title', name)
+                //             .attr('class', 'node')
+                //             .call( force.drag )
+                //             .on("mouseover", function(d,i) {
+                //                 tooltip.classed("hidden", false)
+                //                 .style("top", "100px")
+                //                 .style("left", (d3.event.pageX + 160) + "px")
+                //                 .html(d.name)
+                //             })
+                //                 .on("mouseout",  function(d,i) {
+                //                 tooltip.classed("hidden", true);
+                //             });
 
-                        node.append('circle')
-                            .attr('r', 1)
-                            .attr('stroke', 'black');
+                //         node.append('circle')
+                //             .attr('r', 20)
+                //             .attr('fill', colorByGroup)
+                //             .attr('fill-opacity', 0.5);
 
-                        force
-                            .nodes( data.nodes )
-                            .links( data.links )
-                            .start();
-                    });
-                </script>
+                //         node.append('circle')
+                //             .attr('r', 1)
+                //             .attr('stroke', 'black');
+
+                //         force
+                //             .nodes( data.nodes )
+                //             .links( data.links )
+                //             .start();
+                //     });
+                // </script>
             </div><!-- graph-display -->
 
             <div id="schedule">
