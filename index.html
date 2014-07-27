@@ -67,12 +67,17 @@
 "use strict";
 
 var accessToken = null;
+
 var playlistFields = {
     fields:'tracks.offset,tracks.next,tracks.items(track(name,artists))'
 };
 
 var trackFields = {
     fields:'offset,next,items(track(name,artists))'
+};
+
+var artistFields = {
+    fields:'' // TODO: Fill in these fields
 };
 
 function error(msg) {
@@ -112,8 +117,8 @@ function fetchCurrentUserProfile(callback) {
     callSpotify(url, null, callback);
 }
 
-function fetchStarredItems(id, callback) {
-    var url = 'https://api.spotify.com/v1/users/' + id + '/starred';
+function fetchStarredItems(user_id, callback) {
+    var url = 'https://api.spotify.com/v1/users/' + user_id + '/starred';
     callSpotify(url, playlistFields, callback);
 }
 
@@ -122,8 +127,8 @@ function fetchSavedTracks(callback) {
     callSpotify(url, null, callback);
 }
 
-function fetchCurrentUserPlaylists(id, callback) {
-    var url = 'https://api.spotify.com/v1/users/' + id + '/playlists';
+function fetchCurrentUserPlaylists(user_id, callback) {
+    var url = 'https://api.spotify.com/v1/users/' + user_id + '/playlists';
     callSpotify(url, playlistFields, callback);
 }
 
@@ -135,6 +140,26 @@ function fetchPlaylistOfUser(user_id, playlist_id, callback) {
 function fetchPlaylistTracks(user_id, playlist_id, callback) {
     var url = 'https://api.spotify.com/v1/users' + user_id + '/playlists' + playlist_id + '/tracks';
     callSpotify(url, playlistFields, callback);
+}
+
+function fetchArtist(artist_id, callback) {
+    var url = 'https://api.spotify.com/v1/artists' + artist_id;
+    callSpotify(url, artistFields, callback);
+}
+
+function fetchArtistAlbums(artist_id, callback) {
+    var url = 'https://api.spotify.com/v1/artists' + artist_id + '/albums';
+    callSpotify(url, artistFields, callback);
+}
+
+function fetchArtistTopTracks(artist_id, callback) {
+    var url = 'https://api.spotify.com/v1/artists' + artist_id + '/top-tracks';
+    callSpotify(url, artistFields, callback);
+}
+
+function fetchRelatedArtists(artist_id, callback) {
+    var url = 'https://api.spotify.com/v1/artists' + artist_id + '/related-artists';
+    callSpotify(url, artistFields, callback);
 }
 
 function callSpotify(url, data, callback) {
