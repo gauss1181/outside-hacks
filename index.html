@@ -117,6 +117,26 @@ function fetchStarredItems(id, callback) {
     callSpotify(url, playlistFields, callback);
 }
 
+function fetchSavedTracks(callback) {
+    var url = 'https://api.spotify.com/v1/me/tracks';
+    callSpotify(url, null, callback);
+}
+
+function fetchCurrentUserPlaylists(id, callback) {
+    var url = 'https://api.spotify.com/v1/users/' + id + '/playlists';
+    callSpotify(url, playlistFields, callback);
+}
+
+function fetchPlaylistOfUser(user_id, playlist_id, callback) {
+    var url = 'https://api.spotify.com/v1/users' + user_id + '/playlists' + playlist_id;
+    callSpotify(url, playlistFields, callback);
+}
+
+function fetchPlaylistTracks(user_id, playlist_id, callback) {
+    var url = 'https://api.spotify.com/v1/users' + user_id + '/playlists' + playlist_id + '/tracks';
+    callSpotify(url, playlistFields, callback);
+}
+
 function callSpotify(url, data, callback) {
     $.ajax(url, {
         dataType: 'json',
