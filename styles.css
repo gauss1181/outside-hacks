@@ -2,6 +2,13 @@ body {
     background-color: #FFD751 !important;
 }
 
+hr {
+    margin-top: 60px !important;
+    color: #fff !important;
+    background-color: #F6EECF !important;
+    height: 1px !important;
+}
+
 .hero-unit {
 /*    margin-top:66px;*/
     padding-bottom:30px;
@@ -36,7 +43,7 @@ body {
     margin-top:10px;
     margin-left:auto;
     margin-right:auto;
-    text-align:center;
+
 }
 
 #footer-rsp {

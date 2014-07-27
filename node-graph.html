@@ -121,7 +121,7 @@ d3.json('d3-data/node-data.json', function(err, data) {
 
     node = svg.selectAll('.node')
         .data( data.nodes )
-      .enter().append('g')
+        .enter().append('g')
         .attr('title', name)
         .attr('class', 'node')
         .call( force.drag )
