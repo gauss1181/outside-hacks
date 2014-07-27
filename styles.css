@@ -1,16 +1,16 @@
 .hero-unit {
 /*    margin-top:66px;*/
     padding-bottom:30px;
-    color: #fff;
+    color: #46332D;
     background-image:url('img/bkg-r.png');
     background-repeat: repeat-y;
     background-position: right;
-    background-color: #76C7D0;
+    background-color: #FFD751;
     text-align:center;
 }
 
 .hero-unit h1 {
-    font-size:64px;
+    font-size: 40px;
 }
 
 
