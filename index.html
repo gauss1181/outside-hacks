@@ -82,6 +82,9 @@ var artistFields = {
     fields:'offset,next,items(artist(name,genres))'
 };
 
+// EchoNest API key
+var echonestKey = 'QC3SK04GWLM0CU0NB';
+
 function error(msg) {
     info(msg);
 }
@@ -203,6 +206,18 @@ function showTracks(tracks) {
             showTracks(tracks);
         });
     }
+}
+
+// Echonest functions
+
+function getTrackDetails(track_id, callback) {
+    var url = 'http://developer.echonest.com/api/v4/song/profile?api_key=' + echonestKey + '&track_id=spotify:track:' + track_id + '&bucket=id:spotify&bucket=audio_summary';
+    // will modify later to make it call Echonest and get the actual info by parsing the url
+}
+
+function getEchonestRelatedArtists(artist_id, callback) {
+    var url = 'http://developer.echonest.com/api/v4/song/profile?api_key=' + echonestKey + '&id=spotify:artist:' + artist_id + '&bucket=id:spotify';
+    // will also modify later to make it call Echonest and get actual info by parsing url
 }
 
 // Main function to output Spotify API data to the HTML
