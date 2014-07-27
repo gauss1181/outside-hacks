@@ -85,6 +85,20 @@ var artistFields = {
 // EchoNest API key
 var echonestKey = 'QC3SK04GWLM0CU0NB';
 
+// Outside Lands Echonest taste profile id
+var outsideLands_id = 'CAXQQJM14773F92968';
+
+// Gracenote API key
+
+var gracenoteKey = '';
+
+// Outside Lands: Use Echonest Taste Profile API to get information about
+// Outside Lands's taste profile
+
+function getOutsideLandsInfo(callback) {
+    var url = 'http://developer.echonest.com/api/v4/catalog/read?api_key=' + echonestKey + '&format=json&id=' + outsideLands_id + '&bucket=audio_summary&bucket=artist_hotttnesss';
+}
+
 function error(msg) {
     info(msg);
 }
