@@ -1,7 +1,10 @@
 .hero-unit {
-    margin-top:66px;
+/*    margin-top:66px;*/
     padding-bottom:30px;
     color: #fff;
+    background-image:url('img/bkg-r.png');
+    background-repeat: repeat-y;
+    background-position: right;
     background-color: #76C7D0;
     text-align:center;
 }
@@ -52,13 +55,16 @@
 }
 
 #filter-graph {
-    background-color: #fff;
+/*    background-color: #fff;*/
     width: 80%;
-    margin: 10px auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+
 }
 
 .filter-btn {
-    height: 3.5em;
+    height: 5em;
     margin: 40px 10px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -75,9 +81,13 @@
     transform: rotate(-20deg);
 }
 
+#graph-display {
+    margin-top: 80px;
+}
+
 #viz {
-    background-color: #fff;
-    margin-top: -20px;
+    background-color: #eee;
+/*    background-image:url('img/stardust.png');*/
     width: 80%;
     margin-left: auto;
     margin-right: auto;
