@@ -11,10 +11,11 @@
 	<key>fonts</key>
 	<array>
 		<string>HelveticaNeue-Light</string>
+		<string>AmplifyPersonalUseOnly</string>
 		<string>PunkRockShow-Regular</string>
 	</array>
 	<key>length</key>
-	<integer>29193</integer>
+	<integer>63017</integer>
 	<key>version</key>
 	<integer>37</integer>
 </dict>
