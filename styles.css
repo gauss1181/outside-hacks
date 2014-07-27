@@ -1,3 +1,7 @@
+body {
+    background-color: #FFD751 !important;
+}
+
 .hero-unit {
 /*    margin-top:66px;*/
     padding-bottom:30px;
@@ -90,7 +94,13 @@
 
 #graph-display {
     margin-top: 80px;
+    display: none;
 }
+
+.display-block {
+    display: block;
+}
+
 
 #viz {
     background-color: #eee;
@@ -98,6 +108,10 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+#schedule {
+    display: none;
 }
 
 .suggest-schedule {

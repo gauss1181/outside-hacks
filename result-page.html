@@ -50,18 +50,16 @@
         <div id="item-list"> </div>
     </div>
             <p class="lead"></p>
-            <h1>1. Select a filter</h1>
+            <h1>Select a filter</h1>
             <div id="filter-graph" class="form-inline">
                 <a href="#"><img src="img/btn/btn-genre.png" class="filter-btn"></a>
-<!--                 <a href="#"><img src="img/btn/btn-mood.png" class="filter-btn"></a>
- -->                <a href="#"><img src="img/btn/btn-era.png" class="filter-btn even"></a>
-                <a href="#"><img src="img/btn/btn-origin.png" class="filter-btn even"></a>
-<!--                 <a href="#"><img src="img/btn/btn-tempo.png" class="filter-btn even"></a>
- -->                <a href="#"><img src="img/btn/btn-similarity.png" class="filter-btn"></a>
+                <a href="#"><img src="img/btn/btn-era.png" class="filter-btn"></a>
+                <a href="#"><img src="img/btn/btn-origin.png" class="filter-btn"></a>
+                <a href="#"><img src="img/btn/btn-similarity.png" class="filter-btn"></a>
             </div>
 
             <div id="graph-display">
-                <h1>2. Click graph to browse</h1>
+                <h1>Click graph to browse</h1>
                 <div id="viz"></div>
 
                 <script>
@@ -166,7 +164,7 @@
 
             <div id="schedule">
                 <br /><br />
-                <h1>3. Here's your suggested schedule!</h1>
+                <h1>Here's your suggested schedule!</h1>
                 <div class="suggest-schedule">Artist 1</div>
                 <div class="suggest-schedule">Artist 2</div>
                 <div class="suggest-schedule">Artist 3</div>
@@ -370,6 +368,15 @@ $(document).ready(
 );
 
 </script>
+
+<script>
+$(".filter-btn").click(function(){
+  $("#graph-display").show();
+  $("#schedule").show();
+});
+</script>
+
+
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>
 </html>
