@@ -2,7 +2,7 @@
 /*    margin-top:66px;*/
     padding-bottom:30px;
     color: #46332D;
-    background-image:url('img/bkg-r.png');
+    background-image:url('img/bkg-r-2.png');
     background-repeat: repeat-y;
     background-position: right;
     background-color: #FFD751;
@@ -10,7 +10,7 @@
 }
 
 .hero-unit h1 {
-    font-size: 40px;
+    font-size: 38px;
 }
 
 
@@ -35,12 +35,16 @@
     text-align:center;
 }
 
+#footer-rsp {
+    background-color: #FFD751;
+}
+
 #main h2 {
     font-size:32px;
 }
 
 #info {
-    margin-top:20px;
+/*    margin-top:20px;*/
     margin-left:10px;
     width:100%;
     text-align:center;
@@ -74,11 +78,11 @@
 }
 
 .filter-btn:hover {
-    -webkit-transform: rotate(-20deg);
-    -moz-transform: rotate(-20deg);
-    -o-transform: rotate(-20deg);
-    -ms-transform: rotate(-20deg);
-    transform: rotate(-20deg);
+    -webkit-transform: rotate(+10deg);
+    -moz-transform: rotate(+10deg);
+    -o-transform: rotate(+10deg);
+    -ms-transform: rotate(+10deg);
+    transform: rotate(+10deg);
 }
 
 #graph-display {
@@ -93,3 +97,11 @@
     margin-right: auto;
 }
 
+.suggest-schedule {
+    background-color: #46332D;
+    margin: 15px auto;
+    width: 80%;
+    min-height: 80px;
+    color: #fff;
+    line-height: 80px;
+}
