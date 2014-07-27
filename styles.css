@@ -54,8 +54,11 @@
 }
 
 #search-form button {
-    background-color: #EE5D0A;
+    background-color: #8DBD7C;
+    border: 3px solid #F6EECF;
+    font-size: 20px;
     color: #F6EECF;
+    outline: none;
 }
 
 #filter-graph {
